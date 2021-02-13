@@ -1,9 +1,9 @@
 // .prettierrc.js
 module.exports = {
   // 一行最多 100 字符
-  printWidth: 100,
+  printWidth: 120,
   // 使用 4 个空格缩进
-  tabWidth: 4,
+  tabWidth: 2,
   // 不使用缩进符，而使用空格
   useTabs: false,
   // 行尾需要有分号
@@ -21,7 +21,7 @@ module.exports = {
   // jsx 标签的反尖括号需要换行
   jsxBracketSameLine: false,
   // 箭头函数，只有一个参数的时候，也需要括号
-  arrowParens: 'always',
+  arrowParens: 'never',
   // 每个文件格式化的范围是文件的全部内容
   rangeStart: 0,
   rangeEnd: Infinity,
