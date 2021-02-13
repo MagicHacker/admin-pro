@@ -1,4 +1,5 @@
 module.exports = {
+  parser: 'babel-eslint',
   extends: ['alloy', 'alloy/react'],
   env: {
     browser: true,
