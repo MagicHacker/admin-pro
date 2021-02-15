@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div className="app-wrapper">
         <Router>
-          <Route path="/login" component={Login} />
+          <Route exact path="/" component={Login} />
           <Route path="/mainPage" component={MainPage} />
         </Router>
       </div>
