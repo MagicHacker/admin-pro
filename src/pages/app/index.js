@@ -1,7 +1,7 @@
 
 import './index.less';
 import { Component } from 'react'
-
+import Login from '../login/index'
 class App extends Component {
   constructor(props) {
     super(props)
@@ -10,7 +10,11 @@ class App extends Component {
     }
   }
   render() {
-    return <div className="app-wrapper">我是你爸爸</div>
+    return (
+      <div className="app-wrapper">
+        <Login />
+      </div>
+    )
   }
 }
 export default App;
