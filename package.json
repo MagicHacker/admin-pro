@@ -90,6 +90,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "babel-plugin-import": "^1.13.3",
     "eslint": "^7.20.0",
     "eslint-config-alloy": "^3.10.0",
     "eslint-config-prettier": "^7.2.0",
@@ -163,10 +164,5 @@
       "jest-watch-typeahead/testname"
     ],
     "resetMocks": true
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
   }
 }
