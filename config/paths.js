@@ -1,5 +1,3 @@
-
-
 const path = require('path');
 const fs = require('fs');
 const getPublicUrlOrPath = require('react-dev-utils/getPublicUrlOrPath');
@@ -34,14 +32,12 @@ const moduleFileExtensions = [
   'tsx',
   'json',
   'web.jsx',
-  'jsx',
+  'jsx'
 ];
 
 // Resolve file paths in the same order as webpack
 const resolveModule = (resolveFn, filePath) => {
-  const extension = moduleFileExtensions.find(extension =>
-    fs.existsSync(resolveFn(`${filePath}.${extension}`))
-  );
+  const extension = moduleFileExtensions.find(extension => fs.existsSync(resolveFn(`${filePath}.${extension}`)));
 
   if (extension) {
     return resolveFn(`${filePath}.${extension}`);
@@ -67,9 +63,7 @@ module.exports = {
   proxySetup: resolveApp('src/setupProxy.js'),
   appNodeModules: resolveApp('node_modules'),
   swSrc: resolveModule(resolveApp, 'src/service-worker'),
-  publicUrlOrPath,
+  publicUrlOrPath
 };
-
-
 
 module.exports.moduleFileExtensions = moduleFileExtensions;
