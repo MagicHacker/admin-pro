@@ -1,6 +1,6 @@
 import './index.less';
 import { Component } from 'react';
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, HashRouter as Router, Switch } from 'react-router-dom';
 import Login from '../login/index';
 import MainPage from '../main-page/index';
 class App extends Component {
@@ -12,8 +12,10 @@ class App extends Component {
     return (
       <div className="app-wrapper">
         <Router>
-          <Route exact path="/" component={Login} />
-          <Route path="/mainPage" component={MainPage} />
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route path="/mainPage" component={MainPage} />
+          </Switch>
         </Router>
       </div>
     );
