@@ -9,15 +9,24 @@ class Login extends Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      loading: false
     };
+    this.loginTimer = 0;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+  componentWillUnmount() {
+    clearTimeout(this.loginTimer);
+  }
   handleSubmit(event) {
     event.preventDefault();
-    this.props.history.push({ pathname: '/mainPage' });
-    console.log('输出值', this.state);
+    this.setState({
+      loading: true
+    });
+    this.loginTimer = setTimeout(() => {
+      this.props.history.push({ pathname: '/mainPage' });
+    }, 1000);
   }
   handleChange(event) {
     const {
@@ -28,11 +37,12 @@ class Login extends Component {
     });
   }
   render() {
+    const { username, password, loading } = this.state;
     return (
       <div className="login-wrapper">
         <Layout>
           <Header className="login-title">
-            <span>admin-pro</span>
+            <span>Admin Pro</span>
           </Header>
           <Content className="login-content">
             <Form name="basic">
@@ -46,7 +56,7 @@ class Login extends Component {
               >
                 <Input
                   name="username"
-                  value={this.state.username}
+                  value={username}
                   placeholder="用户名"
                   onChange={this.handleChange}
                   prefix={<UserOutlined />}
@@ -62,14 +72,14 @@ class Login extends Component {
               >
                 <Input.Password
                   name="password"
-                  value={this.state.password}
+                  value={password}
                   placeholder="密码"
                   onChange={this.handleChange}
                   prefix={<LockOutlined />}
                 />
               </Form.Item>
               <Form.Item>
-                <Button type="primary" className="login-submit" onClick={this.handleSubmit}>
+                <Button type="primary" className="login-submit" loading={loading} onClick={this.handleSubmit}>
                   提交
                 </Button>
               </Form.Item>
