@@ -1,7 +1,7 @@
 import './index.less';
 import { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import { Layout, Form, Input, Button } from 'antd';
+import { Layout, Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 const { Header, Content } = Layout;
 class Login extends Component {
@@ -25,7 +25,14 @@ class Login extends Component {
       loading: true
     });
     this.loginTimer = setTimeout(() => {
-      this.props.history.push({ pathname: '/mainPage' });
+      if (this.state.username === 'admin' && this.state.password === 'admin') {
+        this.props.history.push({ pathname: '/mainPage' });
+      } else {
+        this.setState({
+          loading: false
+        });
+        message.error('用户名或密码错误');
+      }
     }, 1000);
   }
   handleChange(event) {
@@ -58,7 +65,7 @@ class Login extends Component {
                 <Input
                   name="username"
                   value={username}
-                  placeholder="用户名"
+                  placeholder="用户名: admin"
                   onChange={this.handleChange}
                   prefix={<UserOutlined />}
                 />
@@ -75,7 +82,7 @@ class Login extends Component {
                 <Input.Password
                   name="password"
                   value={password}
-                  placeholder="密码"
+                  placeholder="密码: admin"
                   onChange={this.handleChange}
                   prefix={<LockOutlined />}
                 />
