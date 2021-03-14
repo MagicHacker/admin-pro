@@ -46,12 +46,12 @@ class Login extends Component {
   render() {
     const { username, password, loading } = this.state;
     return (
-      <div className="login-wrapper">
+      <div className="login_wrapper">
         <Layout>
-          <Header className="login-title">
+          <Header className="login_title">
             <span>Admin Pro</span>
           </Header>
-          <Content className="login-content">
+          <Content className="login_content">
             <Form name="basic">
               <Form.Item
                 name="username"
@@ -88,7 +88,7 @@ class Login extends Component {
                 />
               </Form.Item>
               <Form.Item>
-                <Button type="primary" className="login-submit" loading={loading} onClick={this.handleSubmit}>
+                <Button type="primary" className="login_submit" loading={loading} onClick={this.handleSubmit}>
                   提交
                 </Button>
               </Form.Item>
