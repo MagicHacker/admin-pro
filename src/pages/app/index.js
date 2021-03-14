@@ -2,7 +2,7 @@ import './index.less';
 import { Component } from 'react';
 import { Route, HashRouter as Router, Switch } from 'react-router-dom';
 import Login from '../login/index';
-import MainPage from '../main-page/index';
+import HomePage from '../home-page/index';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,7 +14,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Login} />
-            <Route path="/mainPage" component={MainPage} />
+            <Route path="/homePage" component={HomePage} />
           </Switch>
         </Router>
       </div>
