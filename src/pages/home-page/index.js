@@ -1,19 +1,24 @@
 import { Component } from 'react';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import { message, Layout, Menu } from 'antd';
 import './index.less';
+import { routesList } from '../../routes/index';
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 class HomePage extends Component {
   constructor(props) {
     super(props);
+    this.routesList = routesList;
     this.click = this.click.bind(this);
+    this.state = {
+      comPath: '',
+      component: ''
+    };
   }
   componentDidMount() {
     message.success('登录成功');
   }
-  click(event) {
-    alert(event.key);
-  }
+  click(event) {}
   render() {
     return (
       <div className="home_page_wrapper">
@@ -28,42 +33,97 @@ class HomePage extends Component {
               onClick={this.click}
             >
               <SubMenu key="DashBoard" title="DashBoard">
-                <Menu.Item key="dashBoard_analysis">分析</Menu.Item>
-                <Menu.Item key="dashBoard_monitor">监控</Menu.Item>
-                <Menu.Item key="dashBoard_workbench">工作台</Menu.Item>
+                {this.routesList.dashboard.map(val => {
+                  return (
+                    <Menu.Item key={val.path}>
+                      <NavLink to={val.path}>{val.name}</NavLink>
+                    </Menu.Item>
+                  );
+                })}
               </SubMenu>
-              <SubMenu key="form" title="表单">
-                <Menu.Item key="form_basic">基础表单</Menu.Item>
-                <Menu.Item key="form_step">分步表单</Menu.Item>
-                <Menu.Item key="form_advanced">高级表单</Menu.Item>
+              <SubMenu key="Form" title="表单">
+                {this.routesList.form.map(val => {
+                  return (
+                    <Menu.Item key={val.path}>
+                      <NavLink to={val.path}>{val.name}</NavLink>
+                    </Menu.Item>
+                  );
+                })}
               </SubMenu>
-              <SubMenu key="list" title="列表">
-                <Menu.Item key="list_query">查询表格</Menu.Item>
-                <Menu.Item key="list_basic">标准列表</Menu.Item>
-                <Menu.Item key="list_card">卡片列表</Menu.Item>
+              <SubMenu key="List" title="列表">
+                {this.routesList.list.map(val => {
+                  return (
+                    <Menu.Item key={val.path}>
+                      <NavLink to={val.path}>{val.name}</NavLink>
+                    </Menu.Item>
+                  );
+                })}
               </SubMenu>
-              <SubMenu key="detail" title="详情">
-                <Menu.Item key="detail_basic">基础详情</Menu.Item>
-                <Menu.Item key="detail_advanced">高级详情</Menu.Item>
+              <SubMenu key="Detail" title="详情">
+                {this.routesList.detail.map(val => {
+                  return (
+                    <Menu.Item key={val.path}>
+                      <NavLink to={val.path}>{val.name}</NavLink>
+                    </Menu.Item>
+                  );
+                })}
               </SubMenu>
-              <SubMenu key="result" title="结果">
-                <Menu.Item key="result_success">成功</Menu.Item>
-                <Menu.Item key="result_error">失败</Menu.Item>
+              <SubMenu key="Result" title="结果">
+                {this.routesList.result.map(val => {
+                  return (
+                    <Menu.Item key={val.path}>
+                      <NavLink to={val.path}>{val.name}</NavLink>
+                    </Menu.Item>
+                  );
+                })}
               </SubMenu>
-              <SubMenu key="exception" title="异常">
-                <Menu.Item key="exception_cache">403</Menu.Item>
-                <Menu.Item key="exception_nothing">404</Menu.Item>
-                <Menu.Item key="exception_error">500</Menu.Item>
+              <SubMenu key="Exception" title="异常">
+                {this.routesList.exception.map(val => {
+                  return (
+                    <Menu.Item key={val.path}>
+                      <NavLink to={val.path}>{val.name}</NavLink>
+                    </Menu.Item>
+                  );
+                })}
               </SubMenu>
-              <SubMenu key="persion" title="个人">
-                <Menu.Item key="persion_center">个人中心</Menu.Item>
-                <Menu.Item key="persion_setting">个人设置</Menu.Item>
+              <SubMenu key="Persion" title="个人">
+                {this.routesList.persion.map(val => {
+                  return (
+                    <Menu.Item key={val.path}>
+                      <NavLink to={val.path}>{val.name}</NavLink>
+                    </Menu.Item>
+                  );
+                })}
               </SubMenu>
             </Menu>
           </Sider>
           <Layout>
             <Header className="home_page_header" />
-            <Content className="home_page_content" />
+            <Content className="home_page_content">
+              <Switch>
+                {this.routesList.dashboard.map(val => {
+                  return <Route key={val.path} path={val.path} component={val.component} />;
+                })}
+                {this.routesList.form.map(val => {
+                  return <Route key={val.path} path={val.path} component={val.component} />;
+                })}
+                {this.routesList.list.map(val => {
+                  return <Route key={val.path} path={val.path} component={val.component} />;
+                })}
+                {this.routesList.detail.map(val => {
+                  return <Route key={val.path} path={val.path} component={val.component} />;
+                })}
+                {this.routesList.result.map(val => {
+                  return <Route key={val.path} path={val.path} component={val.component} />;
+                })}
+                {this.routesList.exception.map(val => {
+                  return <Route key={val.path} path={val.path} component={val.component} />;
+                })}
+                {this.routesList.persion.map(val => {
+                  return <Route key={val.path} path={val.path} component={val.component} />;
+                })}
+              </Switch>
+            </Content>
           </Layout>
         </Layout>
       </div>
