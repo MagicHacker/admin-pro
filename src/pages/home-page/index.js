@@ -22,7 +22,7 @@ class HomePage extends Component {
   render() {
     return (
       <div className="home_page_wrapper">
-        <Layout>
+        <Layout className="layout_wrapper">
           <Sider>
             <div className="sider_title">Admin Pro</div>
             <Menu
