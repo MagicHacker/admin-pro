@@ -26,7 +26,7 @@ class Login extends Component {
     });
     this.loginTimer = setTimeout(() => {
       if (this.state.username === 'admin' && this.state.password === 'admin') {
-        this.props.history.push({ pathname: '/homePage' });
+        this.props.history.push({ pathname: '/homePage/dashBoard_analysis' });
       } else {
         this.setState({
           loading: false

@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import { message, Layout, Menu } from 'antd';
+import { AlertOutlined, SmileOutlined, TranslationOutlined } from '@ant-design/icons';
 import './index.less';
 import { routesList } from '../../routes/index';
 const { Header, Sider, Content } = Layout;
@@ -98,7 +99,19 @@ class HomePage extends Component {
             </Menu>
           </Sider>
           <Layout>
-            <Header className="home_page_header" />
+            <Header className="home_page_header">
+              <div className="header_right">
+                <div className="header_icon">
+                  <AlertOutlined />
+                </div>
+                <div className="header_icon">
+                  <SmileOutlined />
+                </div>
+                <div className="header_icon">
+                  <TranslationOutlined />
+                </div>
+              </div>
+            </Header>
             <Content className="home_page_content">
               <Switch>
                 {this.routesList.dashboard.map(val => {
