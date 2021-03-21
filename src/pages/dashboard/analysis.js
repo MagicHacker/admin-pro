@@ -1,102 +1,72 @@
 import { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Layout, Form, Input, Button, message } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-const { Header, Content } = Layout;
-class Login extends Component {
+import { QuestionCircleTwoTone } from '@ant-design/icons';
+import './analysis.less';
+class Analysis extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: '',
-      password: '',
-      loading: false
-    };
-    this.loginTimer = 0;
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-  componentWillUnmount() {
-    clearTimeout(this.loginTimer);
-  }
-  handleSubmit(event) {
-    event.preventDefault();
-    this.setState({
-      loading: true
-    });
-    this.loginTimer = setTimeout(() => {
-      if (this.state.username === 'admin' && this.state.password === 'admin') {
-        this.props.history.push({ pathname: '/homePage' });
-      } else {
-        this.setState({
-          loading: false
-        });
-        message.error('用户名或密码错误');
-      }
-    }, 1000);
-  }
-  handleChange(event) {
-    const {
-      target: { name, value }
-    } = event;
-    this.setState({
-      [name]: value
-    });
+    this.state = {};
   }
   render() {
-    const { username, password, loading } = this.state;
     return (
-      <div className="login_wrapper">
-        <Layout>
-          <Header className="login_title">
-            <span>Admin Pro</span>
-          </Header>
-          <Content className="login_content">
-            <Form name="basic">
-              <Form.Item
-                name="username"
-                rules={[
-                  {
-                    required: true,
-                    message: '请出入用户名'
-                  }
-                ]}
-              >
-                <Input
-                  name="username"
-                  value={username}
-                  placeholder="用户名: admin"
-                  onChange={this.handleChange}
-                  prefix={<UserOutlined />}
-                />
-              </Form.Item>
-              <Form.Item
-                name="password"
-                rules={[
-                  {
-                    required: true,
-                    message: '请输入密码'
-                  }
-                ]}
-              >
-                <Input.Password
-                  name="password"
-                  value={password}
-                  placeholder="密码: admin"
-                  onChange={this.handleChange}
-                  prefix={<LockOutlined />}
-                />
-              </Form.Item>
-              <Form.Item>
-                <Button type="primary" className="login_submit" loading={loading} onClick={this.handleSubmit}>
-                  提交
-                </Button>
-              </Form.Item>
-            </Form>
-          </Content>
-        </Layout>
+      <div className="analysis_wrapper">
+        <div className="analysis_top">
+          <div className="top_card">
+            <div className="top_header">
+              <div>总销售额</div>
+              <div>
+                <QuestionCircleTwoTone />
+              </div>
+            </div>
+            <div className="top_number">¥ 126,560</div>
+            <div className="top_content">
+              <div>周同比12%</div>
+              <div>日同比11%</div>
+            </div>
+            <div className="top_footer">日销售额￥12,423</div>
+          </div>
+          <div className="top_card">
+            <div className="top_header">
+              <div>访问量</div>
+              <div>
+                <QuestionCircleTwoTone />
+              </div>
+            </div>
+            <div className="top_number">8,846</div>
+            <div className="top_content">图表</div>
+            <div className="top_footer">日访问量1,234</div>
+          </div>
+          <div className="top_card">
+            <div className="top_header">
+              <div>支付笔数</div>
+              <div>
+                <QuestionCircleTwoTone />
+              </div>
+            </div>
+            <div className="top_number">6,560</div>
+            <div className="top_content">柱状图</div>
+            <div className="top_footer">转化率60%</div>
+          </div>
+          <div className="top_card">
+            <div className="top_header">
+              <div>运营效果</div>
+              <div>
+                <QuestionCircleTwoTone />
+              </div>
+            </div>
+            <div className="top_number">78%</div>
+            <div className="top_content">进度图</div>
+            <div className="top_footer">周同比12%日同比11%</div>
+          </div>
+        </div>
+        <div className="analysis_row">2</div>
+        <div className="analysis_card">
+          <div>1</div>
+          <div>2</div>
+        </div>
+        <div className="analysis_charts">4</div>
       </div>
     );
   }
 }
 
-export default withRouter(Login);
+export default Analysis;
