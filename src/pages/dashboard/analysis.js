@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import { QuestionCircleTwoTone } from '@ant-design/icons';
+import { Tabs, Card } from 'antd';
+const { TabPane } = Tabs;
 import './analysis.less';
 class Analysis extends Component {
   constructor(props) {
@@ -58,12 +60,25 @@ class Analysis extends Component {
             <div className="top_footer">周同比12%日同比11%</div>
           </div>
         </div>
-        <div className="analysis_row">2</div>
-        <div className="analysis_card">
-          <div>1</div>
-          <div>2</div>
+        <div className="analysis_row">
+          <Tabs>
+            <TabPane tab="销售额" key="1">
+              柱状图
+            </TabPane>
+            <TabPane tab="访问量" key="2">
+              柱状图
+            </TabPane>
+          </Tabs>
         </div>
-        <div className="analysis_charts">4</div>
+        <div className="analysis_card">
+          <Card title="线上热门搜索" style={{ width: 580, height: 500 }}>
+            1
+          </Card>
+          <Card title="销售额类别占比" style={{ width: 580, height: 500 }}>
+            2
+          </Card>
+        </div>
+        <div className="analysis_charts">魂图</div>
       </div>
     );
   }
