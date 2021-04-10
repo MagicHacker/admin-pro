@@ -1,102 +1,53 @@
 import { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Layout, Form, Input, Button, message } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-const { Header, Content } = Layout;
-class Login extends Component {
+import { Card, Row, Col } from 'antd';
+import './monitor.less';
+class Monitor extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: '',
-      password: '',
-      loading: false
-    };
-    this.loginTimer = 0;
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-  componentWillUnmount() {
-    clearTimeout(this.loginTimer);
-  }
-  handleSubmit(event) {
-    event.preventDefault();
-    this.setState({
-      loading: true
-    });
-    this.loginTimer = setTimeout(() => {
-      if (this.state.username === 'admin' && this.state.password === 'admin') {
-        this.props.history.push({ pathname: '/homePage' });
-      } else {
-        this.setState({
-          loading: false
-        });
-        message.error('用户名或密码错误');
-      }
-    }, 1000);
-  }
-  handleChange(event) {
-    const {
-      target: { name, value }
-    } = event;
-    this.setState({
-      [name]: value
-    });
+    this.state = {};
   }
   render() {
-    const { username, password, loading } = this.state;
     return (
-      <div className="login_wrapper">
-        <Layout>
-          <Header className="login_title">
-            <span>Admin Pro</span>
-          </Header>
-          <Content className="login_content">
-            <Form name="basic">
-              <Form.Item
-                name="username"
-                rules={[
-                  {
-                    required: true,
-                    message: '请出入用户名'
-                  }
-                ]}
-              >
-                <Input
-                  name="username"
-                  value={username}
-                  placeholder="用户名: admin"
-                  onChange={this.handleChange}
-                  prefix={<UserOutlined />}
-                />
-              </Form.Item>
-              <Form.Item
-                name="password"
-                rules={[
-                  {
-                    required: true,
-                    message: '请输入密码'
-                  }
-                ]}
-              >
-                <Input.Password
-                  name="password"
-                  value={password}
-                  placeholder="密码: admin"
-                  onChange={this.handleChange}
-                  prefix={<LockOutlined />}
-                />
-              </Form.Item>
-              <Form.Item>
-                <Button type="primary" className="login_submit" loading={loading} onClick={this.handleSubmit}>
-                  提交
-                </Button>
-              </Form.Item>
-            </Form>
-          </Content>
-        </Layout>
+      <div className="monitor_wrapper">
+        <div className="monitor_top">
+          <Row gutter={30}>
+            <Col span={18}>
+              <Card title="活动实时交易" bordered={false}>
+                1
+              </Card>
+            </Col>
+            <Col span={6}>
+              <Card title="活动情况预测" bordered={false}>
+                2
+              </Card>
+              <Card title="券核效率" bordered={false} style={{ 'margin-top': 20 }}>
+                3
+              </Card>
+            </Col>
+          </Row>
+        </div>
+        <div className="monitor_footer">
+          <Row gutter={30}>
+            <Col span={12}>
+              <Card title="活动情况预测" bordered={false}>
+                4
+              </Card>
+            </Col>
+            <Col span={6}>
+              <Card title="活动情况预测" bordered={false}>
+                5
+              </Card>
+            </Col>
+            <Col span={6}>
+              <Card title="活动情况预测" bordered={false}>
+                6
+              </Card>
+            </Col>
+          </Row>
+        </div>
       </div>
     );
   }
 }
 
-export default withRouter(Login);
+export default Monitor;
