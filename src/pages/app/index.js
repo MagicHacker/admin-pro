@@ -13,8 +13,8 @@ class App extends Component {
       <div className="app_wrapper">
         <Router>
           <Switch>
-            <Route exact path="/" component={Login} />
-            <Route path="/homePage" component={HomePage} />
+            <Route exact path="/" component={props => <Login {...props} />} />
+            <Route path="/homePage" component={props => <HomePage {...props} />} />
           </Switch>
         </Router>
       </div>
