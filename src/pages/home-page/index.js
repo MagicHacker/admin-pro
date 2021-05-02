@@ -10,7 +10,6 @@ class HomePage extends Component {
   constructor(props) {
     super(props);
     this.routesList = routesList;
-    this.click = this.click.bind(this);
     this.state = {
       comPath: '',
       component: ''
@@ -19,7 +18,6 @@ class HomePage extends Component {
   componentDidMount() {
     message.success('登录成功');
   }
-  click(event) {}
   render() {
     return (
       <div className="home_page_wrapper">
@@ -31,7 +29,6 @@ class HomePage extends Component {
               theme="dark"
               defaultOpenKeys={['DashBoard']}
               defaultSelectedKeys={['dashBoard_analysis']}
-              onClick={this.click}
             >
               <SubMenu key="DashBoard" title="DashBoard">
                 {this.routesList.dashboard.map(val => {

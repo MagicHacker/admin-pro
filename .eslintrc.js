@@ -10,6 +10,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'max-params': 'off',
-    complexity: 'off'
+    complexity: 'off',
+    'no-invalid-this': 'off'
   }
 };
