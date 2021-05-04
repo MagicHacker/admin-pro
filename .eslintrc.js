@@ -11,6 +11,7 @@ module.exports = {
     'prettier/prettier': 'error',
     'max-params': 'off',
     complexity: 'off',
-    'no-invalid-this': 'off'
+    'no-invalid-this': 'off',
+    'react/jsx-no-useless-fragment': 'off'
   }
 };
