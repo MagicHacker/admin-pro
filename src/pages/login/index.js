@@ -1,6 +1,5 @@
 import './index.less';
 import { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import { Layout, Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 const { Header, Content } = Layout;
@@ -100,4 +99,4 @@ class Login extends Component {
   }
 }
 
-export default withRouter(Login);
+export default Login;
